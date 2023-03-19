@@ -62,6 +62,14 @@ jobs:
       - name: Test with Maven 
         run: mvn -f backend/pom.xml test spotbugs:check pmd:check pmd:cpd-check license:check dependency-check:check -Ddependency-check.skip=false
 
+      - name: Publish Test Results
+        uses: EnricoMi/publish-unit-test-result-action@v2
+        if: always()
+        with:
+          files: |
+            **/surefire-reports/*.xml
+          large_files: true
+
       # Build Phase
  
       - name: Build frontend
