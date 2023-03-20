@@ -31,8 +31,8 @@ import org.hyperledger.acy_py.generated.model.DIDCreate;
 import org.hyperledger.acy_py.generated.model.DIDCreateOptions;
 import org.hyperledger.aries.AriesClient;
 import org.hyperledger.aries.api.resolver.DIDDocument;
+import org.hyperledger.aries.api.wallet.DefaultDidMethod;
 import org.hyperledger.aries.api.wallet.ListWalletDidFilter;
-import org.hyperledger.aries.api.wallet.WalletDIDCreate;
 import org.hyperledger.bpa.api.ApiConstants;
 import org.hyperledger.bpa.api.exception.NetworkException;
 import org.hyperledger.bpa.client.CachingAriesClient;
@@ -76,7 +76,7 @@ public class Identity {
             try {
                 Optional<DID> walletDid = acaCache.walletDidPublic();
                 if (walletDid.isPresent()) {
-                    myDid = "did:" + walletDid.get().getMethod().getValue() + ":" + walletDid.get().getDid();
+                    myDid = "did:" + walletDid.get().getMethod() + ":" + walletDid.get().getDid();
                 }
             } catch (IOException e) {
                 log.error("aca-py not reachable", e);
@@ -116,13 +116,13 @@ public class Identity {
                 final Optional<List<DID>> walletDids = acaPy.walletDid(ListWalletDidFilter
                         .builder()
                         .keyType(DID.KeyTypeEnum.ED25519)
-                        .method(DID.MethodEnum.SOV)
+                        .method(DefaultDidMethod.SOV.getMethod())
                         .build());
                 if (walletDids.isPresent() && !walletDids.get().isEmpty()) {
                     walletDid = Optional.of(walletDids.get().get(0));
                 } else {
                     walletDid = acaPy
-                            .walletDidCreate(WalletDIDCreate.builder().method(DIDCreate.MethodEnum.SOV).build());
+                            .walletDidCreate(DIDCreate.builder().method(DefaultDidMethod.SOV.getMethod()).build());
                 }
             }
             if (walletDid.isPresent()) {
@@ -158,12 +158,12 @@ public class Identity {
             Optional<List<DID>> didKey = acaPy.walletDid(ListWalletDidFilter
                     .builder()
                     .keyType(DID.KeyTypeEnum.BLS12381G2)
-                    .method(DID.MethodEnum.KEY)
+                    .method(DefaultDidMethod.KEY.getMethod())
                     .build());
             if (didKey.isEmpty() || CollectionUtils.isEmpty(didKey.get())) {
-                DID did = acaPy.walletDidCreate(WalletDIDCreate
+                DID did = acaPy.walletDidCreate(DIDCreate
                         .builder()
-                        .method(DIDCreate.MethodEnum.KEY)
+                        .method(DefaultDidMethod.KEY.getMethod())
                         .options(DIDCreateOptions.builder()
                                 .keyType(DIDCreateOptions.KeyTypeEnum.BLS12381G2)
                                 .build())

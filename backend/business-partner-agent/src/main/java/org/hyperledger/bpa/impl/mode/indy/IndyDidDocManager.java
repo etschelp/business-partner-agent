@@ -51,7 +51,7 @@ public class IndyDidDocManager implements DidDocManager {
         try {
             final Optional<DID> pubDid = ac.walletDidPublic();
             if (pubDid.isPresent()) {
-                return ur.getDidDocument("did:" + pubDid.get().getMethod().getValue() + ":" + pubDid.get().getDid());
+                return ur.getDidDocument("did:" + pubDid.get().getMethod() + ":" + pubDid.get().getDid());
             }
 
         } catch (IOException e) {

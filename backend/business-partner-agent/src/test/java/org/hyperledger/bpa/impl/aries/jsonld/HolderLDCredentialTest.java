@@ -26,6 +26,7 @@ import org.hyperledger.aries.api.ExchangeVersion;
 import org.hyperledger.aries.api.issue_credential_v2.V20CredExRecord;
 import org.hyperledger.aries.api.issue_credential_v2.V2CredentialExchangeFree;
 import org.hyperledger.aries.api.issue_credential_v2.V2IssueLDCredentialEvent;
+import org.hyperledger.aries.api.wallet.DefaultDidMethod;
 import org.hyperledger.aries.webhook.EventParser;
 import org.hyperledger.bpa.BaseTest;
 import org.hyperledger.bpa.api.CredentialType;
@@ -87,7 +88,7 @@ public class HolderLDCredentialTest extends BaseTest {
     @Test
     void testHolderReceivesCredentialFromIssuerAndAccepts() throws IOException {
         Mockito.when(ac.walletDidPublic()).thenReturn(Optional.of(DID.builder()
-                .did("did:indy:1234").method(DID.MethodEnum.SOV).build()));
+                .did("did:indy:1234").method(DefaultDidMethod.SOV.getMethod()).build()));
 
         String offerReceived = FileLoader.load("files/v2-ld-credex-holder/01-offer-received.json");
         String requestSent = FileLoader.load("files/v2-ld-credex-holder/02-request-sent.json");
@@ -163,7 +164,7 @@ public class HolderLDCredentialTest extends BaseTest {
         V20CredExRecord offer = ep.parseValueSave(offerReceived, V20CredExRecord.class).orElseThrow();
 
         Mockito.when(ac.walletDidPublic()).thenReturn(Optional.of(DID.builder()
-                .did("did:indy:1234").method(DID.MethodEnum.SOV).build()));
+                .did("did:indy:1234").method(DefaultDidMethod.SOV.getMethod()).build()));
         Mockito.when(
                 ac.issueCredentialV2SendProposal(Mockito.any(V2CredentialExchangeFree.class)))
                 .thenReturn(Optional.of(proposal));
@@ -206,7 +207,7 @@ public class HolderLDCredentialTest extends BaseTest {
         V20CredExRecord abandoned = ep.parseValueSave(abandonedEvent, V20CredExRecord.class).orElseThrow();
 
         Mockito.when(ac.walletDidPublic()).thenReturn(Optional.of(DID.builder()
-                .did("did:indy:1234").method(DID.MethodEnum.SOV).build()));
+                .did("did:indy:1234").method(DefaultDidMethod.SOV.getMethod()).build()));
         Mockito.when(
                 ac.issueCredentialV2SendProposal(Mockito.any(V2CredentialExchangeFree.class)))
                 .thenReturn(Optional.of(proposal));
