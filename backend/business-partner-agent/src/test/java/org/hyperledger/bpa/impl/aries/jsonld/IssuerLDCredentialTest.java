@@ -26,6 +26,7 @@ import org.hyperledger.aries.api.ExchangeVersion;
 import org.hyperledger.aries.api.issue_credential_v2.V20CredBoundOfferRequest;
 import org.hyperledger.aries.api.issue_credential_v2.V20CredExRecord;
 import org.hyperledger.aries.api.issue_credential_v2.V2CredentialExchangeFree;
+import org.hyperledger.aries.api.wallet.DefaultDidMethod;
 import org.hyperledger.aries.webhook.EventParser;
 import org.hyperledger.bpa.BaseTest;
 import org.hyperledger.bpa.api.CredentialType;
@@ -94,7 +95,7 @@ public class IssuerLDCredentialTest extends BaseTest {
         V20CredExRecord done = ep.parseValueSave(exDone, V20CredExRecord.class).orElseThrow();
 
         Mockito.when(ac.walletDidPublic()).thenReturn(Optional.of(DID.builder()
-                .did("did:indy:1234").method(DID.MethodEnum.SOV).build()));
+                .did("did:indy:1234").method(DefaultDidMethod.SOV.getMethod()).build()));
         Mockito.when(ac.issueCredentialV2Send(Mockito.any(V2CredentialExchangeFree.class)))
                 .thenReturn(Optional.of(offer));
 
@@ -138,7 +139,7 @@ public class IssuerLDCredentialTest extends BaseTest {
         V20CredExRecord problem = ep.parseValueSave(abandoned, V20CredExRecord.class).orElseThrow();
 
         Mockito.when(ac.walletDidPublic()).thenReturn(Optional.of(DID.builder()
-                .did("did:indy:1234").method(DID.MethodEnum.SOV).build()));
+                .did("did:indy:1234").method(DefaultDidMethod.SOV.getMethod()).build()));
         Mockito.when(ac.issueCredentialV2Send(Mockito.any(V2CredentialExchangeFree.class)))
                 .thenReturn(Optional.of(offer));
 
@@ -175,7 +176,7 @@ public class IssuerLDCredentialTest extends BaseTest {
         V20CredExRecord issued = ep.parseValueSave(credentialIssued, V20CredExRecord.class).orElseThrow();
 
         Mockito.when(ac.walletDidPublic()).thenReturn(Optional.of(DID.builder()
-                .did("did:indy:1234").method(DID.MethodEnum.SOV).build()));
+                .did("did:indy:1234").method(DefaultDidMethod.SOV.getMethod()).build()));
         Mockito.when(
                 ac.issueCredentialV2RecordsSendOffer(Mockito.anyString(), Mockito.any(V20CredBoundOfferRequest.class)))
                 .thenReturn(Optional.of(offer));
