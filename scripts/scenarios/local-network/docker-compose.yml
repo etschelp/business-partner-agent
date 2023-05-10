@@ -41,7 +41,7 @@ services:
     extra_hosts:
      - host.docker.internal:host-gateway
   bpa-agent1:
-    image: bcgovimages/aries-cloudagent:py36-1.16-1_0.7.5
+    image: ghcr.io/hyperledger/aries-cloudagent-python:py3.9-0.8.1
     ports:
       - ${ACAPY1_ADMIN_PORT}:${ACAPY1_ADMIN_PORT}
       - ${ACAPY1_HTTP_PORT}:${ACAPY1_HTTP_PORT}
@@ -71,8 +71,8 @@ services:
         "
       ]
     volumes:
-      - "./acapy-static-args.yml:/home/indy/acapy-static-args.yml"
-      - "./genesis-transaction-list.yml:/home/indy/genesis-transaction-list.yml"
+      - "./acapy-static-args.yml:/home/aries/acapy-static-args.yml"
+      - "./genesis-transaction-list.yml:/home/aries/genesis-transaction-list.yml"
     extra_hosts:
      - host.docker.internal:host-gateway
   bpa-wallet-db1:
@@ -126,7 +126,7 @@ services:
     extra_hosts:
      - host.docker.internal:host-gateway
   bpa-agent2:
-    image: bcgovimages/aries-cloudagent:py36-1.16-1_0.7.5
+    image: ghcr.io/hyperledger/aries-cloudagent-python:py3.9-0.8.1
     ports:
       - ${ACAPY2_ADMIN_PORT}:${ACAPY2_ADMIN_PORT}
       - ${ACAPY2_HTTP_PORT}:${ACAPY2_HTTP_PORT}
@@ -156,8 +156,8 @@ services:
         "
       ]
     volumes:
-      - "./acapy-static-args.yml:/home/indy/acapy-static-args.yml"
-      - "./genesis-transaction-list.yml:/home/indy/genesis-transaction-list.yml"
+      - "./acapy-static-args.yml:/home/aries/acapy-static-args.yml"
+      - "./genesis-transaction-list.yml:/home/aries/genesis-transaction-list.yml"
     extra_hosts:
      - host.docker.internal:host-gateway
   bpa-wallet-db2:

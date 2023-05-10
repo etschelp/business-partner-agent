@@ -118,7 +118,7 @@
         <dependency><!-- Overwrite for jakarta-annotations-api -->
             <groupId>org.apache.tomcat</groupId>
             <artifactId>tomcat-annotations-api</artifactId>
-            <version>10.1.7</version>
+            <version>10.1.8</version>
         </dependency>
 
         <!-- Logging -->
@@ -171,7 +171,7 @@
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-crypto</artifactId>
-            <version>6.0.2</version>
+            <version>6.0.3</version>
         </dependency>
         <dependency>
             <groupId>org.mapstruct</groupId>
@@ -329,7 +329,7 @@
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
-                <version>0.8.8</version>
+                <version>0.8.10</version>
                 <executions>
                     <execution>
                         <goals>
@@ -467,7 +467,7 @@
                     <!-- Copy frontend artifacts to resource folder -->
                     <plugin>
                         <artifactId>maven-resources-plugin</artifactId>
-                        <version>3.3.0</version>
+                        <version>3.3.1</version>
                         <executions>
                             <execution>
                                 <id>copy-frontend-resources</id>

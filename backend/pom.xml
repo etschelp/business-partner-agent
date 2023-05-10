@@ -53,29 +53,29 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <skip.docker.build>true</skip.docker.build>
         <!-- Dependency Versions -->
-        <jackson.version>2.14.2</jackson.version>
-        <jackson.databind.version>2.14.2</jackson.databind.version>
-        <log4j2.version>2.19.0</log4j2.version>
+        <jackson.version>2.15.0</jackson.version>
+        <jackson.databind.version>2.15.0</jackson.databind.version>
+        <log4j2.version>2.20.0</log4j2.version>
         <lombok.version>1.18.26</lombok.version>
         <lombok.maven.plugin.version>1.18.20.1</lombok.maven.plugin.version>
-        <micronaut.version>3.8.7</micronaut.version>
-        <micronaut.data.version>3.9.6</micronaut.data.version>
-        <micronaut.openapi.version>4.8.5</micronaut.openapi.version>
-        <micronaut.security.version>3.10.0</micronaut.security.version>
-        <mockito.version>5.2.0</mockito.version>
-        <okhttp.version>4.10.0</okhttp.version>
-        <org.mapstruct.version>1.5.3.Final</org.mapstruct.version>
+        <micronaut.version>3.9.1</micronaut.version>
+        <micronaut.data.version>3.10.0</micronaut.data.version>
+        <micronaut.openapi.version>4.8.7</micronaut.openapi.version>
+        <micronaut.security.version>3.11.0</micronaut.security.version>
+        <mockito.version>5.3.1</mockito.version>
+        <okhttp.version>4.11.0</okhttp.version>
+        <org.mapstruct.version>1.5.5.Final</org.mapstruct.version>
         <pmd.version>6.55.0</pmd.version>
         <spotbugs.version>4.7.3</spotbugs.version>
-        <testcontainers.version>1.17.6</testcontainers.version>
+        <testcontainers.version>1.18.0</testcontainers.version>
         <!-- Plugin Versions -->
-        <license-maven-plugin.version>4.1</license-maven-plugin.version>
+        <license-maven-plugin.version>4.2</license-maven-plugin.version>
         <maven.compiler.plugin.version>3.11.0</maven.compiler.plugin.version>
         <maven.dependency.plugin.version>3.5.0</maven.dependency.plugin.version>
-        <maven.failsafe.plugin.version>3.0.0</maven.failsafe.plugin.version>
+        <maven.failsafe.plugin.version>3.1.0</maven.failsafe.plugin.version>
         <maven.pmd.plugin.version>3.20.0</maven.pmd.plugin.version>
-        <maven.spotbugs.plugin.version>4.7.3.2</maven.spotbugs.plugin.version>
-        <maven.surefire.plugin.version>3.0.0</maven.surefire.plugin.version>
+        <maven.spotbugs.plugin.version>4.7.3.4</maven.spotbugs.plugin.version>
+        <maven.surefire.plugin.version>3.1.0</maven.surefire.plugin.version>
     </properties>
 
     <modules>
@@ -125,14 +125,14 @@
             <dependency>
                 <groupId>org.flywaydb</groupId>
                 <artifactId>flyway-core</artifactId>
-                <version>9.8.3</version>
+                <version>9.17.0</version>
             </dependency>
 
             <!-- Overwrites for vulnerable dependencies -->
             <dependency>
                 <groupId>org.json</groupId>
                 <artifactId>json</artifactId>
-                <version>20220320</version>
+                <version>20230227</version>
             </dependency>
             <dependency>
                 <groupId>com.fasterxml.jackson.core</groupId>
@@ -270,7 +270,7 @@
             <plugin>
                 <groupId>org.owasp</groupId>
                 <artifactId>dependency-check-maven</artifactId>
-                <version>8.1.2</version>
+                <version>8.2.1</version>
                 <configuration>
                     <failBuildOnAnyVulnerability>false</failBuildOnAnyVulnerability>
                     <skip>true</skip>
@@ -339,7 +339,7 @@
                 <plugin>
                     <groupId>io.micronaut.build</groupId>
                     <artifactId>micronaut-maven-plugin</artifactId>
-                    <version>3.5.2</version>
+                    <version>3.5.3</version>
                 </plugin>
                 <plugin>
                     <artifactId>maven-dependency-plugin</artifactId>
@@ -359,7 +359,7 @@
                 </plugin>
                 <plugin>
                     <artifactId>maven-install-plugin</artifactId>
-                    <version>3.1.0</version>
+                    <version>3.1.1</version>
                 </plugin>
                 <plugin>
                     <artifactId>maven-site-plugin</artifactId>
@@ -543,7 +543,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-project-info-reports-plugin</artifactId>
-                <version>3.4.2</version>
+                <version>3.4.3</version>
                 <reportSets>
                     <reportSet>
                         <reports>

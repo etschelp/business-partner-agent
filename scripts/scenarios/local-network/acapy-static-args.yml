@@ -4,6 +4,7 @@ auto-accept-invites: false
 auto-accept-requests: false
 monitor-ping: true # enables the connection status in the ui
 auto-ping-connection: true # needed when using the connection protocol, otherwise the connection might not become active
+requests-through-public-did: true
 
 # auto message
 auto-respond-messages: false
@@ -46,6 +47,7 @@ exch-use-unencrypted-tags: true
 plugin: 'aries_cloudagent.messaging.jsonld'
 outbound-transport: http
 log-level: info
+debug-webhooks: true
 
 # multi ledger support
 genesis-transactions-list: './genesis-transaction-list.yml'
